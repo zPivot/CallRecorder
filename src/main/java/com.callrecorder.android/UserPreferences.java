@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
 import android.preference.PreferenceManager;
-import android.util.Log;
 
 class UserPreferences {
 	private static Context context = null;

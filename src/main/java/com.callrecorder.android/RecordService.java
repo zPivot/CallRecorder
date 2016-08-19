@@ -22,8 +22,6 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.media.MediaRecorder;
-import android.media.MediaRecorder.OnErrorListener;
-import android.media.MediaRecorder.OnInfoListener;
 import android.os.IBinder;
 import android.os.ParcelFileDescriptor;
 import android.support.v4.app.NotificationCompat;
