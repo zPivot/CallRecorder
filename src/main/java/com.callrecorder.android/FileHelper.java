@@ -43,7 +43,7 @@ class FileHelper {
 	 */
 	public static DocumentFile getFile(Context context, @NonNull String phoneNumber) throws Exception {
 		String date = (String) DateFormat.format("yyyyMMddHHmmss", new Date());
-		String filename = date + "_" + cleanNumber(phoneNumber) + ".3gp";
+		String filename = date + "_" + cleanNumber(phoneNumber);
 
 		return getStorageFile(context).createFile("audio/3gpp", filename);
 	}
