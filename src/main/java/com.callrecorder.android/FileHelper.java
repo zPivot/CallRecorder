@@ -32,6 +32,7 @@ import android.os.StatFs;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.v4.provider.DocumentFile;
+import android.support.v4.content.FileProvider;
 import android.telephony.PhoneNumberUtils;
 import android.text.format.DateFormat;
 import android.util.Log;
@@ -163,6 +164,14 @@ class FileHelper {
 		} else {
 			return DocumentFile.fromTreeUri(context, uri);
 		}
+	}
+
+	public static Uri getContentUri(Context context, Uri uri) {
+		if (uri.getScheme() == "content")
+			return uri;
+		return FileProvider.getUriForFile(context,
+				"com.callrecorder.android.fileprovider",
+				new File(uri.getPath()));
 	}
 
 	@SuppressWarnings("BooleanMethodIsAlwaysInverted")

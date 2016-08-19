@@ -24,6 +24,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v4.provider.DocumentFile;
 import android.telephony.PhoneNumberUtils;
 import android.view.LayoutInflater;
@@ -131,12 +132,16 @@ class RecordingsAdapter extends ArrayAdapter<Recording> {
 	private void sendMail(String fileName) {
 		DocumentFile file = FileHelper.getStorageFile(context)
 			.findFile(fileName);
+		Uri uri = FileHelper.getContentUri(context, file.getUri());
+
 		Intent sendIntent = new Intent(Intent.ACTION_SEND)
 			.putExtra(Intent.EXTRA_SUBJECT,
 				context.getString(R.string.mail_subject))
 			.putExtra(Intent.EXTRA_TEXT,
 				context.getString(R.string.mail_body))
-			.putExtra(Intent.EXTRA_STREAM, file.getUri())
+			.putExtra(Intent.EXTRA_STREAM, uri)
+			.setData(uri)
+			.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
 			.setType("audio/3gpp");
 
 		context.startActivity(Intent.createChooser(sendIntent,
@@ -146,9 +151,12 @@ class RecordingsAdapter extends ArrayAdapter<Recording> {
 	private void startPlayExternal(String fileName) {
 		DocumentFile file = FileHelper.getStorageFile(context)
 			.findFile(fileName);
+		Uri uri = FileHelper.getContentUri(context, file.getUri());
+
 		context.startActivity(new Intent()
 			.setAction(Intent.ACTION_VIEW)
-			.setData(file.getUri())
+			.setData(uri)
+			.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
 			.setType("audio/3gpp"));
 	}
 }
