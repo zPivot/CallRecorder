@@ -106,9 +106,18 @@ public class SettingsActivity extends PreferenceActivity {
 			String path = dir.getAbsolutePath();
 			long bytes = FileHelper.getFreeSpaceAvailable(path);
 			String freeSpace = FileHelper.addUnits(bytes);
+			if (!path.endsWith("/")) {
+				path += "/";
+			}
+			String appFilesPostfix = BuildConfig.APPLICATION_ID + "/files/";
+			if (path.endsWith("Android/data/" + appFilesPostfix)) {
+				path = path.substring(0, path.length() - appFilesPostfix.length() - 14);
+			} else if (path.endsWith(appFilesPostfix)) {
+				path = path.substring(0, path.length() - appFilesPostfix.length() - 1);
+			}
 			//noinspection deprecation
-			choices.add(Html.fromHtml("<html><small>" + path
-				+ " [" + freeSpace + "]</small></html>"));
+			choices.add(Html.fromHtml("<small>" + path
+				+ " [" + freeSpace + "]</small>"));
 		}
 		AlertDialog dialog = new AlertDialog.Builder(this)
 			.setTitle(R.string.choose_storage_location)
