@@ -20,3 +20,8 @@ before_script:
   - adb shell input keyevent 82 &
 
 script: gradle build connectedAndroidTest
+
+
+after_failure:  
+ 
+  - cat /home/travis/build/zPivot/CallRecorder/build/outputs/lint-results-debug.html
