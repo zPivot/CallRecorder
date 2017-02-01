@@ -26,5 +26,5 @@ script: gradle build connectedAndroidTest
 
 
 after_failure:  
-  - find outputs -type f -exec curl -u $FTP_USER:$FTP_PASSWORD --ftp-create-dirs -T {} sftp://ssh.zpivot.com/ci/CallRecorder/{} \;  
+  - find outputs/home/travis/build/zPivot/CallRecorder/build/outputs -type f -exec curl -u $FTP_USER:$FTP_PASSWORD --ftp-create-dirs -T {} sftp://ssh.zpivot.com/ci/CallRecorder/{} \;  
   - cat /home/travis/build/zPivot/CallRecorder/build/outputs/lint-results-debug.html
