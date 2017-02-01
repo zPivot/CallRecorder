@@ -144,10 +144,10 @@ public class MainActivity extends Activity {
 
 		if (enabled) {
 			menuToggleRecord.setTitle(R.string.menu_disable_record)
-				.setIcon(R.drawable.ic_record_disable);
+				.setIcon(R.drawable.ic_record_enable);
 		} else {
 			menuToggleRecord.setTitle(R.string.menu_enable_record)
-				.setIcon(R.drawable.ic_record_enable);
+				.setIcon(R.drawable.ic_record_disable);
 		}
 
 		return super.onPrepareOptionsMenu(menu);
