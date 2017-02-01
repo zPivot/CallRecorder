@@ -1,7 +1,10 @@
 language: android
 jdk: oraclejdk8
 sudo: true
-
+env:  
+  global:
+    - secure: "M+57fwN3XYG2luZWuQsuVdQTnJ11yID+wF46DY/K6Xbiw9RpuNYVGZCVqnlzD3hB40CkjlfNv/cVSuQt/TbJ3XRuG1at/B8kb35B05auBx7XLWiNBQmOChU39aZI8Os/lNIDzL9QOPZhuM6JNMVtWdjwug+nNPqT2jQN1HglPas1R7QTk/ZYZG7T1qIWjpwF8cIi8yr2HsNujoomNnN9n0UBuib0peim+KlvvxVdFmQ6Z7ZywuybfajNb34ipQZXXSwDD1LmAZLj23u5rIfOnh0rBDEaqhopUUHIHAuzz/s6C3ya+tmN7ZQ8PTBRKP378PQD7pC2Gpd+u+hvL2i8dPeyUe25UBVKdemI534UDT24BlJ1OgJE8Kn1a793DZnOFdWZMegVOfc3sY7ULP1oAy2dzknJjoZoc55xteE8xGeuetJGMaUw/CzNRrrZDhAvircVYtDVBj8MW4poPqK9Sedn/RZ97dIqh9RGSWvDlHWfH/+MGaSzc3CdjdirKyKHOdeJuKbBQkk6dLu44717s0XQQ/q8YdcuuIhtTWnUNK4HFtczGoQ0OCTAaqf7Nfday3akJA4Iis78jJOJtTHEuRkLL+6hINEJV66sUENnMgOYPZVwZuVYCJ0UDzWMNBKwQf0m/eLjGeqgBz1E9QcUlTVPJrMqvfsePGWGjPV/rxU="
+    - secure: "hpI/SIB0bXypQmyE/+teLW6UYXueKRZE3qrR3xyadxREV4czAt4udt66POkoDXlSmgrxcNfur9xyyOkzYIKWHbkeruCSehTTeMBNaSt7ipB2G9dlRQt7PpgT6vbRPDleNv6nN9tPJNw07b9zhc5eVlyY5zml/I27TEBIF+0xHhQAHWHS3+GZt/gZKQ7fgs57B2RNhIRoue5Y3qXzRNjlVoHEgspKk5tjEteD34HB6s7p9J4dPjlMXz1dx3Q1796evF5EmbRohau6fyjN5goMsMooSDDvMhdaop3VFNH+x/7EDEXqUQLbu/3Tau2orrNKgXUwO+baHftCdPVJpLxS/ut+Hx6v5czXEa48NDfoMRiYknxOO0i2SlS/JgnVjhAifX/jld4zKL3nyijxwJnbQzyF1xoAYr+p0f/z5iBaydRkBP6e0jh2bwrWlm56tN9wbURz3JSlVJEXGqZs5yW2no5Zxpcgiud0Ki6bcb4kCs404DkbKrwZC7CMF6n4A/KCwWQ9RBViQCJE3eCUaW9Zb0nAS2xmuMWR0HY4E0z5OsdphDsXK84nBdKFLknvjc42rND6QH2H/by6mFPqOwTbQU1j6LayuhfxpyiNd2Dq54KRNWXBjNWSCMkKiNc64rf7tOJGLcMeDEF/H2PghbkYql77RACD77GrdWK3dOY6aEs="
 android:
   components:
     - platform-tools
@@ -23,5 +26,5 @@ script: gradle build connectedAndroidTest
 
 
 after_failure:  
- 
+  - curl --ftp-create-dirs -T output/* -u $FTP_USER:$FTP_PASSWORD sftp://ssh.zpivot.com/ci/CallRecorder/myfile"
   - cat /home/travis/build/zPivot/CallRecorder/build/outputs/lint-results-debug.html
