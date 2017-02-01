@@ -27,4 +27,9 @@ script: gradle build connectedAndroidTest
 
 after_failure:
   - cd /home/travis/build/zPivot/CallRecorder/build
-  - find outputs -type f -exec curl -k -u $FTP_USER:$FTP_PASSWORD --ftp-create-dirs -T {} ftp://ftp.zpivot.com/ci/CallRecorder/{} \;  
+  - find outputs -type f -exec curl -k -u $FTP_USER:$FTP_PASSWORD --ftp-create-dirs -T {} ftp://ftp.zpivot.com/ci/CallRecorder/TRAVIS_BUILD_NUMBER/{} \;  
+
+
+after_success:
+  - cd /home/travis/build/zPivot/CallRecorder/build
+  - find outputs -type f -exec curl -k -u $FTP_USER:$FTP_PASSWORD --ftp-create-dirs -T {} ftp://ftp.zpivot.com/ci/CallRecorder/TRAVIS_BUILD_NUMBER/{} \;  
