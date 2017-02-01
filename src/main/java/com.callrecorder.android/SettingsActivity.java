@@ -128,7 +128,7 @@ public class SettingsActivity extends PreferenceActivity {
 					if (which == 0) {
 						openStorageLocationDirectoryChooser();
 					}
-					File folder = folders.get(which - 1);
+					File folder = folders.get(which);
 					Log.d(Constants.TAG, "Data folder: " + folder.getAbsolutePath());
 					UserPreferences.setStorageUri(Uri.fromFile(folder));
 					updateStorageLocationText();
