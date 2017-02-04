@@ -82,8 +82,8 @@ public class MainActivity extends Activity {
 			Manifest.permission.READ_EXTERNAL_STORAGE
 		};						
 	
--		List<String> requestingPerms = new ArrayList<>();
--		for (String perm : perms) {
+		List<String> requestingPerms = new ArrayList<>();
+		for (String perm : perms) {
 			if (checkSelfPermission(perm) !=
 				PackageManager.PERMISSION_GRANTED) {
 				requestingPerms.add(perm);
