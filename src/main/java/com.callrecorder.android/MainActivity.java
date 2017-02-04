@@ -78,8 +78,12 @@ public class MainActivity extends Activity {
 			Manifest.permission.READ_CONTACTS,
 			Manifest.permission.PROCESS_OUTGOING_CALLS,
 			Manifest.permission.BLUETOOTH,
-			Manifest.permission.MODIFY_AUDIO_SETTINGS};						
-	for (String perm : perms) {
+			Manifest.permission.MODIFY_AUDIO_SETTINGS,
+			Manifest.permission.READ_EXTERNAL_STORAGE
+		};						
+	
+-		List<String> requestingPerms = new ArrayList<>();
+-		for (String perm : perms) {
 			if (checkSelfPermission(perm) !=
 				PackageManager.PERMISSION_GRANTED) {
 				requestingPerms.add(perm);
