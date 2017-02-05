@@ -100,7 +100,7 @@ public class SettingsActivity extends PreferenceActivity {
 			}
 			folders.add(dir);
 			if (currentStorage.equals(Uri.fromFile(dir))) {
-				selectedIndex = i + 1;
+				selectedIndex = i;
 			}
 
 			String path = dir.getAbsolutePath();
